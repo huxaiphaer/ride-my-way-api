@@ -1,6 +1,9 @@
+import os
+import sys
+sys.path.append(os.getcwd())
 import unittest
 import json
-from app import app,config
+from app import app, config
 from app.config import app_config
 from app.rides.managerides import rides_list
 from app.user.authentication import my_users_list
