@@ -4,10 +4,12 @@ python:
 
 install:
   - pip install -r requirements.txt
+  - pip install pytest pytest-cov
 
 # command to run tests
 script:
-  - nosetests -v --with-coverage
+  - pytest --cov=app/
 
 after_success:
   - coveralls
+  
