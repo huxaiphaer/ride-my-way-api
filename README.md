@@ -18,17 +18,17 @@ To acces this API online visit [API Link ](https://ride-my-way-huzaifah.herokuap
 
 ### Installation
 
-First clone this repository
+First clone this repository on windows
 ```
  git clone @https://github.com/huxaiphaer/ride-my-way-api/tree/develop
  cd ride-my-way-api
  ```
 
-Create virtual environment and install it
+Create virtual environment and install it on Windows
 
  ```
  virtualenv --python=python3 venv
- source /venv/bin/activate
+ source .\venv\bin\activate.bat
  ```
 
 Then install all the necessary dependencies by
