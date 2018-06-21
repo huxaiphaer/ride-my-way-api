@@ -11,8 +11,19 @@ rides_list = []
 
 
 
+
 class GetRides(Resource):
     
+    def check_auth(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument('token', location='headers')
+        args = parser.parse_args()
+        if not args['token']:
+            return make_response(jsonify({"message": "Token is missing"}), 401)
+        decoded = decode_token(args['token'])
+        if decoded["status"] == "Failure":
+                return make_response(jsonify({"message": decoded["message"]}), 401)
+
     def post(self):
         parser = reqparse.RequestParser()
         parser.add_argument('offer_name', type=str, required=True)
@@ -21,13 +32,14 @@ class GetRides(Resource):
         parser.add_argument('token', location='headers')
         
         args = parser.parse_args()
+        self.check_auth()
          #check the token value if its available 
-        if not args['token']:
-            return make_response(jsonify({"message": "Token is missing"}), 401)
+        #if not args['token']:
+            #return make_response(jsonify({"message": "Token is missing"}), 401)
+        #decoded = decode_token(args['token'])
+        ##if decoded["status"] == "Failure":
+            #return make_response(jsonify({"message": decoded["message"]}), 401)
         decoded = decode_token(args['token'])
-        if decoded["status"] == "Failure":
-            return make_response(jsonify({"message": decoded["message"]}), 401)
-
 
         for user in my_users_list:
 
@@ -65,22 +77,16 @@ class GetRides(Resource):
         Returns all ride offers  made for authenticated drivers and passengers
         token is required to get them.
         """
-        parser = reqparse.RequestParser()
-        parser.add_argument('token', location='headers')
-        args = parser.parse_args()
-        if not args['token']:
-            return make_response(jsonify({"message": "Token is missing"}), 401)
-        decoded = decode_token(args['token'])
-        if decoded["status"] == "Failure":
-            return make_response(jsonify({"message": decoded["message"]}), 401)
+        
+        self.check_auth()
        
         my_rides = []
-        for ride in rides_list:
+        for r in rides_list:
             rides_data = {
-                    "id":ride["id"],
-                    "offer_name": ride["offer_name"],
-                    "offer_details": ride['offer_details'],
-                     "offer_price": ride['offer_price']
+                    "id":r["id"],
+                    "offer_name": r["offer_name"],
+                    "offer_details": r['offer_details'],
+                     "offer_price": r['offer_price']
                 }
             my_rides.append(rides_data)
         if my_rides:
@@ -93,16 +99,20 @@ class GetRides(Resource):
 
 
 class GetSingleRide(Resource):
-    def get(self,ride_id):
+    def check_auth(self):
         parser = reqparse.RequestParser()
-        parser.add_argument('token', location='headers')      
+        parser.add_argument('token', location='headers')
         args = parser.parse_args()
-
         if not args['token']:
             return make_response(jsonify({"message": "Token is missing"}), 401)
         decoded = decode_token(args['token'])
         if decoded["status"] == "Failure":
-            return make_response(jsonify({"message": decoded["message"]}), 401)
+                return make_response(jsonify({"message": decoded["message"]}), 401)
+
+
+    def get(self,ride_id):
+       
+        self.check_auth()
         for ride in rides_list:
             if int(ride['id']) == int(ride_id):
 
