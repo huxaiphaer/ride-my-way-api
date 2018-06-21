@@ -51,3 +51,4 @@ exclude_paths:
   - "*html/*"
   - "*_bootlocale.py*"
   - "*typing.py*"
+  -"*app/user/authentication.py"
