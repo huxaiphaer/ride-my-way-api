@@ -9,12 +9,12 @@ that provides drivers with the ability to create ride offers and passengers  to 
 
 To acces this API online visit [API Link ](https://ride-my-way-huzaifah.herokuapp.com/)
 
-#### Requirements Building blocks.
+### Requirements Building blocks.
 - ```Python3``` - A programming language that lets us work more quickly (The universe loves speed!).
 
--```Flask``` - A microframework for Python based on Werkzeug, Jinja 2 and good intentions.
+- ```Flask``` - A microframework for Python based on Werkzeug, Jinja 2 and good intentions.
 
--```Virtualenv``` - A tool to create isolated virtual environment
+- ```Virtualenv``` - A tool to create isolated virtual environment
 
 ### Installation
 
