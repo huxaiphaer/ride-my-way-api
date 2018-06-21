@@ -28,7 +28,7 @@ Create virtual environment and install it on Windows
 
  ```
  virtualenv --python=python3 venv
- source .\venv\bin\activate.bat
+ .\venv\bin\activate.bat
  ```
 
 Then install all the necessary dependencies by
