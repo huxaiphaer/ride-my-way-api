@@ -1,4 +1,7 @@
 ---
+machine:
+  environment:
+    CODECLIMATE_REPO_TOKEN: ab24b326dac817e772c5246823b67af66e2358e51134c33e20aaf7fb228088b0
 engines:
   duplication:
     enabled: true
