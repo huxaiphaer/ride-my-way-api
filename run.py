@@ -4,7 +4,7 @@ from app import app
 
 @app.route('/', methods=['GET'])
 def index():
-    return ('welcome to ride my way API. Test the endpoints in postman')
+    return ('welcome to  Tuvuge  API. Test the endpoints in postman')
 
 if __name__ == '__main__':
     app.run(port=5000,debug=True)
