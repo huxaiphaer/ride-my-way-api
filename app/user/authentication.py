@@ -21,28 +21,43 @@ class SignUp(Resource):
         isDriver = args['isDriver']
 
         if username.strip() == "" or len(username.strip()) < 2:
-            return make_response(jsonify({"message": "invalid, Enter name please"}), 400)
+            return make_response(jsonify({"message": 
+            "invalid username, Enter correct username please"}),
+             400)
 
         if re.compile('[!@#$%^&*:;?><.0-9]').match(username):
-            return make_response(jsonify({"message": "Invalid characters not allowed"}), 400)
+            return make_response(jsonify({"message": 
+            "Invalid characters not allowed"}), 
+            400)
 
         if not re.match(r"([\w\.-]+)@([\w\.-]+)(\.[\w\.]+$)", email):
-            return make_response(jsonify({"message": "Enter valid email"}), 400)
+            return make_response(jsonify({"message": 
+            "Enter valid email"}), 
+            400)
 
         if password.strip() == "":
-            return make_response(jsonify({"message": "Enter password"}), 400)
+            return make_response(jsonify({"message": 
+            "Enter password"}), 
+            400)
 
         if len(password) < 5:
-            return make_response(jsonify({"message": "Password is too short, < 5"}), 400)
+            return make_response(jsonify({"message": 
+            "Password is too short, < 5"}), 
+            400)
 
         new_user = User(username, email, password,isDriver)
 
         for user in my_users_list:
             if email == user['email']:
-                return make_response(jsonify({"message": "email already in use"}), 400)
+                return make_response(jsonify({"message": 
+                "email already in use"}), 
+                400)
 
         my_users_list.append(json.loads(new_user.json()))
-        return make_response(jsonify({'message': 'User successfully created', 'email': new_user.email}), 201)
+        return make_response(jsonify({'message': 
+        'User successfully created',
+         'email': new_user.email}),
+          201)
 
 
 class Login(Resource):
