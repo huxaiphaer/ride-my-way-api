@@ -1,5 +1,5 @@
-from flask import Flask,jsonify,make_response
-from flask_restful import Resource, Api, reqparse
+from flask import Flask , jsonify , make_response
+from flask_restful import Resource , Api , reqparse
 from app.model.user import User,generate_token,decode_token
 import re
 import json
@@ -13,6 +13,7 @@ rides_list = []
 class GetRides(Resource):
     
     def post(self):
+        
         parser = reqparse.RequestParser()
         parser.add_argument('name', type=str, required=True)
         parser.add_argument('details', type=str, required=True)
@@ -44,14 +45,13 @@ class GetRides(Resource):
                         id = len(rides_list)+1
                     else:
                         id = id+1
-                    new_request = AddRide(id,on,od,price)
+                    new_request = AddRide(id , on , od , price)
                     for ridereq in rides_list:
                         if on == ridereq['name']:
                             return make_response(jsonify({"message": 
                             'This ride offer  already exists.'}), 
                             400)
                   
-            
                     ridereq = json.loads(new_request.json())
                     rides_list.append(ridereq)
               
@@ -68,7 +68,6 @@ class GetRides(Resource):
         401)
 
     def get(self):
-
 
         """
         Returns all ride offers  made for authenticated drivers and passengers
@@ -97,12 +96,10 @@ class GetRides(Resource):
                                     "status": "success"}),
                                      200)
         else:
-            return make_response(jsonify({"message": 
-            "No ride offers found."}), 
+            return make_response(jsonify({"message": "No ride offers found."}), 
             404)
 
-        return make_response(jsonify({"message": 
-        "Please first create an account."}),
+        return make_response(jsonify({"message": "Please first create an account."}),
          404)
 
 
