@@ -16,9 +16,9 @@ To acces this API online visit [API Link ](https://ride-my-way-huzaifah.herokuap
 
 - ```Virtualenv``` - A tool to create isolated virtual environment
 
-### Installation
+### Installation on WIndows
 
-First clone this repository on windows
+First clone this repository
 ```
  git clone @https://github.com/huxaiphaer/ride-my-way-api
  cd ride-my-way-api
@@ -34,16 +34,11 @@ Create virtual environment and install it on Windows
 Then install all the necessary dependencies by
  ```
 pip install -r requirements.txt
-## Run the server
-At the terminal or console type
+## Run the server at the terminal or console type
  ```
-
  python run.py
  ```
-## Testing and knowing coverage
-To run tests run this command at the console/terminal
+## Testing and knowing coverage run 
  ```
 nosetests or python manage.py test
- ```
-To run tests with coverage run this command at the console/terminal
  ```
