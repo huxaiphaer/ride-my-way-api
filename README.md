@@ -34,11 +34,13 @@ Create virtual environment and install it on Windows
 Then install all the necessary dependencies by
  ```
 pip install -r requirements.txt
-## Run the server at the terminal or console type
+
+
+Then run the application
  ```
  python run.py
  ```
-## Testing and knowing coverage run 
+ Testing and knowing coverage run 
  ```
 nosetests or python manage.py test
  ```
