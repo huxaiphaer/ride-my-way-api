@@ -34,7 +34,7 @@ Create virtual environment and install it on Windows
 Then install all the necessary dependencies by
  ```
 pip install -r requirements.txt
-
+ ```
 
 Then run the application
  ```
