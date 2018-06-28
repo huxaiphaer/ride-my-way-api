@@ -7,7 +7,7 @@ from flask import current_app
 
 class User:
     """
-    Class to represent the User model
+    Class to represent the User authentication (Signup and Signin)
     """
 
     def __init__(self, username, email, password,isDriver):
@@ -64,8 +64,12 @@ def decode_token(token):
     """Decode the access token to get the payload and return user_id and isDriver field results"""
     try:
         payload = jwt.decode(token, current_app.config.get('SECRET_KEY'))
-        return {"id": payload['sub'], "isDriver": payload['isDriver'], "status": "Success"}
+        return {"id": payload['sub'], 
+        "isDriver": payload['isDriver'], 
+        "status": "Success"}
     except jwt.ExpiredSignatureError:
-        return {"status": "Failure", "message": "Expired token. Please log in to get a new token"}
+        return {"status": "Failure", 
+        "message": "Expired token. Please log in to get a new token"}
     except jwt.InvalidTokenError:
-        return {"status": "Failure", "message": "Invalid token. Please register or login"}
+        return {"status": "Failure", 
+        "message": "Invalid token. Please register or login"}

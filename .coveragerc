@@ -26,7 +26,6 @@ omit =
       *app/api/__init__.py*
       *app/__init__.py*
       *app/config.py*
-      *app/model/*
       *test/*
       *html/*
       *_bootlocale.py*
