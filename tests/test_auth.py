@@ -1,6 +1,6 @@
 import json
 
-from base import BaseTestCase
+from tests import BaseTestCase
 
 
 class Test_auth(BaseTestCase):

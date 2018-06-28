@@ -8,9 +8,6 @@ my_users_list = []
 
 class SignUp(Resource):
     def post(self):
-
-        
-  
         parser = reqparse.RequestParser()
         parser.add_argument('username', type=str, required=True)
         parser.add_argument('email', type=str, required=True)
