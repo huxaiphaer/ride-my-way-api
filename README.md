@@ -20,7 +20,7 @@ To acces this API online visit [API Link ](https://ride-my-way-huzaifah.herokuap
 
 First clone this repository on windows
 ```
- git clone @https://github.com/huxaiphaer/ride-my-way-api/tree/develop
+ git clone @https://github.com/huxaiphaer/ride-my-way-api
  cd ride-my-way-api
  ```
 

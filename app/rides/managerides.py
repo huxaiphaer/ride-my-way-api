@@ -10,7 +10,6 @@ from app.model.addride import AddRide
 rides_list = []
 
 
-
 class GetRides(Resource):
     
     def post(self):
