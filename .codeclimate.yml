@@ -19,8 +19,8 @@ ratings:
   paths:
   - "**.py"
 exclude_paths:
-  - "docs/*"
-  - "examples/*"
+  - "*docs/*"
+  - "*examples/*"
   - "*api/songs/models*"
   - "*/site-packages/*"
   - "*markupsafe/*"

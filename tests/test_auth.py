@@ -49,7 +49,7 @@ class Test_auth(BaseTestCase):
             response = self.register_user("h", "lol@gmail.com", "12345","True")
             data = json.loads(response.data.decode())
             self.assertEqual(response.status_code, 400)
-            self.assertEqual(data.get('message'), "invalid, Enter name please")
+            self.assertEqual(data.get('message'), "invalid username, Enter correct username please")
             
     def test_username_with_characters_onsignup(self):
         """Test when a user registers with an invalid username with characters"""
@@ -62,7 +62,7 @@ class Test_auth(BaseTestCase):
     def test_when_invalid_email_onsignup(self):
         """Test when invalid email is provided onsignup"""
         with self.client:
-            response = self.register_user("hadijah", "hadgmailcom", "123456","True")
+            response = self.register_user("huz", "hadgmailcom", "123456","True")
             data = json.loads(response.data.decode())
             self.assertEqual(response.status_code, 400)
             self.assertEqual(data.get('message'), "Enter valid email")
@@ -70,7 +70,7 @@ class Test_auth(BaseTestCase):
     def test_when_no_password_onsignup(self):
         """Test when no password onsignup"""
         with self.client:
-            response = self.register_user("hadijah", "had@gmail.com", "","True")
+            response = self.register_user("huz", "had@gmail.com", "","True")
             data = json.loads(response.data.decode())
             self.assertEqual(response.status_code, 400)
             self.assertEqual(data.get('message'), "Enter password")
@@ -78,7 +78,7 @@ class Test_auth(BaseTestCase):
     def test_when_short_password_onsignup(self):
         """Test when short password is provided onsignup"""
         with self.client:
-            response = self.register_user("hadijah", "had@gmail.com", "123","True")
+            response = self.register_user("huz", "had@gmail.com", "123","True")
             data = json.loads(response.data.decode())
             self.assertEqual(response.status_code, 400)
             self.assertEqual(data.get('message'), "Password is too short, < 5")
