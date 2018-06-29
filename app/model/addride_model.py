@@ -18,5 +18,5 @@ class AddRide():
             'id': self.id,
             'name': self.name,
             'details': self.details,
-            'price':self.price
+            'price': self.price
         })
