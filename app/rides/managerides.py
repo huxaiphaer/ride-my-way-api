@@ -34,15 +34,15 @@ class GetRides(Resource):
 
         for user in my_users_list:
             if user['id'] == decoded['id']:
-                on = args['name']
-                od = args['details']
+                offer_name = args['name']
+                offer_details = args['details']
                 price = args['price']
                 global id
                 if not rides_list:
                     id = len(rides_list)+1
                 else:
                     id = id+1
-                new_request = AddRide(id, on, od, price)
+                new_request = AddRide(id, offer_name, offer_details, price)
                 for ridereq in rides_list:
                     if on == ridereq['name']:
                         return make_response(jsonify({"message":
