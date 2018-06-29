@@ -65,7 +65,7 @@ class BaseTestCase(unittest.TestCase):
         data = json.loads(response.data.decode())
         return data['token']
 
-    def add_ride(self, offer_name, offer_details, offer_price,token):
+    def add_ride(self, name, details, price,token):
         """
         Function to create a request
         """
@@ -73,9 +73,9 @@ class BaseTestCase(unittest.TestCase):
             '/api/v1/rides',
             data=json.dumps(
                 dict(
-                    offer_name=offer_name,
-                    offer_details=offer_details,
-                    offer_price=offer_price
+                    name=name,
+                    details=details,
+                    price=price
                 )
             ),
             content_type='application/json',

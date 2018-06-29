@@ -34,35 +34,30 @@ class GetRides(Resource):
 
 
         for user in my_users_list:
-
             if user['id'] == decoded['id']:
-                if decoded['isDriver'] == "True":
-                    on = args['name']
-                    od = args['details']
-                    price = args['price']
-                    global id
-                    if len(rides_list)==0:
-                        id = len(rides_list)+1
-                    else:
-                        id = id+1
-                    new_request = AddRide(id , on , od , price)
-                    for ridereq in rides_list:
-                        if on == ridereq['name']:
-                            return make_response(jsonify({"message": 
-                            'This ride offer  already exists.'}), 
-                            400)
-                  
-                    ridereq = json.loads(new_request.json())
-                    rides_list.append(ridereq)
-              
-                    return make_response(jsonify({
-                    'message': 'Ride offer created successfully.',
-                    'status': 'success'},
-                ), 201)
-                return make_response(jsonify({"message": 
-                "Passenger  is not authorized to create ride offers"}),
-                 401)
-
+                on = args['name']
+                od = args['details']
+                price = args['price']
+                global id
+                if len(rides_list)==0:
+                    id = len(rides_list)+1
+                else:
+                    id = id+1
+                new_request = AddRide(id , on , od , price)
+                for ridereq in rides_list:
+                    if on == ridereq['name']:
+                        return make_response(jsonify({"message": 
+                        'This ride offer  already exists.'}), 
+                        400)
+                
+                ridereq = json.loads(new_request.json())
+                rides_list.append(ridereq)
+            
+                return make_response(jsonify({
+                'message': 'Ride offer created successfully.',
+                'status': 'success'},
+            ), 201)
+                
         return make_response(jsonify({"message": 
         "Please first create an account."}), 
         401)
