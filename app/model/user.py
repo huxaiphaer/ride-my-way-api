@@ -10,7 +10,7 @@ class User:
     Class to represent the User authentication (Signup and Signin)
     """
 
-    def __init__(self, username, email, password,isDriver):
+    def __init__(self, username, email, password, isDriver):
         self.id = uuid.uuid4().int
         self.username = username
         self.email = email
@@ -27,14 +27,12 @@ class User:
             'name': self.username,
             'email': self.email,
             'password': self.password,
-            'isDriver':self.isDriver
+            'isDriver': self.isDriver
         })
 
 
 def generate_token(user_id, isDriver):
     """Generates the access token to be used as the Authorization header"""
-
-
 
     try:
         # set up a payload with an expiration time
@@ -47,7 +45,7 @@ def generate_token(user_id, isDriver):
             'isDriver': isDriver
         }
         # create the byte string token using the payload and the SECRET key
-        
+
         jwt_string = jwt.encode(
             payload,
             current_app.config.get('SECRET_KEY'),
@@ -61,15 +59,16 @@ def generate_token(user_id, isDriver):
 
 
 def decode_token(token):
-    """Decode the access token to get the payload and return user_id and isDriver field results"""
+    """Decode the access token to get the payload 
+    and return user_id and isDriver field results"""
     try:
         payload = jwt.decode(token, current_app.config.get('SECRET_KEY'))
-        return {"id": payload['sub'], 
-        "isDriver": payload['isDriver'], 
-        "status": "Success"}
+        return {"id": payload['sub'],
+                "isDriver": payload['isDriver'],
+                "status": "Success"}
     except jwt.ExpiredSignatureError:
-        return {"status": "Failure", 
-        "message": "Expired token. Please log in to get a new token"}
+        return {"status": "Failure",
+                "message": "Expired token. Please log in to get a new token"}
     except jwt.InvalidTokenError:
-        return {"status": "Failure", 
-        "message": "Invalid token. Please register or login"}
+        return {"status": "Failure",
+                "message": "Invalid token. Please register or login"}
