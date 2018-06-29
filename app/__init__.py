@@ -3,7 +3,7 @@ from flask_restful import Api
 from app.user.authentication import Login,SignUp
 from app.rides.managerides import GetRides,GetSingleRide
 from app.rides.request_ride_offer import RequestRideOffer
-# from .config import 
+
 
 app = Flask(__name__)
 
