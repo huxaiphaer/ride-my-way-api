@@ -60,7 +60,7 @@ class GetRides(Resource):
                     'status': 'success'},
                 ), 201)
                 return make_response(jsonify({"message": 
-                "Passenger  is not authorized to create meals"}),
+                "Passenger  is not authorized to create ride offers"}),
                  401)
 
         return make_response(jsonify({"message": 
@@ -77,10 +77,12 @@ class GetRides(Resource):
         parser.add_argument('token', location='headers')
         args = parser.parse_args()
         if not args['token']:
-            return make_response(jsonify({"message": "Token is missing"}), 401)
+            return make_response(jsonify({"message": "Token is missing"}),
+             401)
         decoded = decode_token(args['token'])
         if decoded["status"] == "Failure":
-            return make_response(jsonify({"message": decoded["message"]}), 401)
+            return make_response(jsonify({"message": decoded["message"]}),
+             401)
        
         my_rides = []
         for ride in rides_list:
@@ -110,10 +112,12 @@ class GetSingleRide(Resource):
         args = parser.parse_args()
 
         if not args['token']:
-            return make_response(jsonify({"message": "Token is missing"}), 401)
+            return make_response(jsonify({"message": "Token is missing"}),
+             401)
         decoded = decode_token(args['token'])
         if decoded["status"] == "Failure":
-            return make_response(jsonify({"message": decoded["message"]}), 401)
+            return make_response(jsonify({"message": decoded["message"]}), 
+            401)
         for ride in rides_list:
             if int(ride['id']) == int(ride_id):
 

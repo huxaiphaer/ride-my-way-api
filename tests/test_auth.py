@@ -49,7 +49,7 @@ class Test_auth(BaseTestCase):
             response = self.register_user("h", "lol@gmail.com", "12345","True")
             data = json.loads(response.data.decode())
             self.assertEqual(response.status_code, 400)
-            self.assertEqual(data.get('message'), "invalid, Enter name please")
+            self.assertEqual(data.get('message'), "invalid username, Enter correct username please")
             
     def test_username_with_characters_onsignup(self):
         """Test when a user registers with an invalid username with characters"""
